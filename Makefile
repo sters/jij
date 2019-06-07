@@ -1,4 +1,5 @@
-CMD_PACKAGE := github.com/sters/jij/cmd/jij
+CMD_DIR := cmd/jij
+CMD_PACKAGE := github.com/sters/jij/${CMD_DIR}
 GO_ENV := GO111MODULE=on CGO_ENABLED=0
 BUILD_DIR := ./build
 
@@ -10,7 +11,7 @@ tidy:
 test: 
 	${GO_ENV} go test -v ./...
 build: 
-	${GO_ENV} go build -o $(BUILD_DIR)/jij cmd/main.go
+	${GO_ENV} go build -o $(BUILD_DIR)/jij ${CMD_DIR}/main.go
 install:
 	${GO_ENV} go install ${CMD_PACKAGE}
 run:
